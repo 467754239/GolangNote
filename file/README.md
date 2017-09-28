@@ -78,3 +78,60 @@ func main() {
 	fmt.Print(string(chunks))
 }
 ```
+
+- 小文件一次性全部读取
+> Version 1
+
+```
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+)
+
+func main() {
+	/*
+		方式3.1 小文件一次性读取.
+	*/
+	buf, err := ioutil.ReadFile("/var/log/messages")
+	//buf, err := ioutil.ReadFile("/etc/passwd")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Print(string(buf))
+
+}
+```
+
+> Version 2
+
+```
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
+)
+
+func main() {
+	fd, err := os.Open("/etc/passwd")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer fd.Close()
+
+	/*
+		方式3.2 小文件一次性读取.
+	*/
+	buf, err := ioutil.ReadAll(fd)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Print(string(buf))
+
+}
+```
