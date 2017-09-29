@@ -6,7 +6,8 @@
 - [x] bufio.Reader
 - [x] io.Copy 
 
-1. 原生读取，也称为裸读取，很少使用。
+1. 按块的方式，原生读取，也称为裸读取，很少使用。
+> cpu寄存器 > l1/l2/l3 cache > Mem > Disk
 ```
 package main
 
@@ -45,6 +46,7 @@ func main() {
 ```
 
 2. 加上buffer的读取，很高效。
+> 预读取，bufio就是一个高效读取的方式。对普通文件读取的封装。
 ```
 package main
 

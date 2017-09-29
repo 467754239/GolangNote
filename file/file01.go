@@ -15,7 +15,7 @@ func main() {
 	defer fd.Close()
 
 	/*
-		方式1. 裸读取，很少使用。
+		方式1. 按块的方式，裸读取，很少使用。
 	*/
 	chunks := make([]byte, 1024, 1024)
 	buf := make([]byte, 1024)
