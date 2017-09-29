@@ -217,7 +217,7 @@ func main() {
 ```
 
 5. 操作类文件的神器
-
+> 类文件： socket/channel/file
 ```
 package main
 

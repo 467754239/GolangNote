@@ -8,6 +8,7 @@ Golang Note
 
 ###### 进阶
 * [channel](./channel)
+* [io](./io)
 
 
 ###### web
