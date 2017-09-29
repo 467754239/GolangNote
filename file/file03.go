@@ -8,7 +8,7 @@ import (
 
 func main() {
 	/*
-		方式3.1 小文件一次性读取.
+		方式3.1 小文件一次性读取.不需要打开文件
 	*/
 	buf, err := ioutil.ReadFile("/var/log/messages")
 	//buf, err := ioutil.ReadFile("/etc/passwd")
