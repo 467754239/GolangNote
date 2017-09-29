@@ -31,7 +31,7 @@ func main() {
 	chunks := make([]byte, 1024, 1024)
 	buf := make([]byte, 1024)
 	for {
-		n, err := fd.Read(buf)
+		n, err := fd.Read(buf) // 每次Read都是从磁盘上。
 		if err == io.EOF {
 			break
 		}
@@ -69,12 +69,12 @@ func main() {
 	/*
 		方式2. 加上buffer的读取，很高效。
 	*/
-	r := bufio.NewReader(fd)
+	r := bufio.NewReader(fd) // 预先加载数据到内存buffer
 
 	chunks := make([]byte, 1024, 1024)
 	buf := make([]byte, 1024)
 	for {
-		n, err := r.Read(buf)
+		n, err := r.Read(buf) // 每次Read是从内存buffer而不是从磁盘上。
 		if err == io.EOF {
 			break
 		}
