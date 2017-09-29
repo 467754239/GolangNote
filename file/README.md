@@ -1,5 +1,11 @@
 ## 操作文件的多种方式
 
+- [x] file.Read
+- [x] ioutil.ReadFile 
+- [x] bufio.Scanner 
+- [x] bufio.Reader
+- [x] io.Copy 
+
 1. 原生读取，也称为裸读取，很少使用。
 ```
 package main
@@ -79,7 +85,7 @@ func main() {
 }
 ```
 
-- 小文件一次性全部读取
+3.1 小文件一次性全部读取
 > Version 1
 
 ```
@@ -105,7 +111,7 @@ func main() {
 }
 ```
 
-> Version 2
+3.2 小文件一次性全部读取 
 
 ```
 package main
@@ -136,7 +142,7 @@ func main() {
 }
 ```
 
-- 按行读取，按分隔符读取
+4. 按行读取，按分隔符读取
 
 ```
 package main
@@ -176,7 +182,7 @@ func main() {
 }
 ```
 
-- 操作类文件的神器
+5. 操作类文件的神器
 
 ```
 package main
