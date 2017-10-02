@@ -4,6 +4,8 @@ Golang Note
 
 ###### 基础
 * [file](./file)
+* [os/exec](./exec)
+* [func](./func)
 
 
 ###### 进阶
