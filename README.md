@@ -4,6 +4,7 @@ Golang Note
 
 ###### 基础
 * [file](./file)
+* [slice](./slice)
 * [os/exec](./exec)
 * [func](./func)
 

@@ -33,6 +33,19 @@ func split(sum int) (x, y int) {
 	return
 }
 
+/*
+	可变参数
+	fmt.Println 就是一个可变参数
+*/
+func sum(args ...int) int {
+	// 所有的参数放到args变量中，args类型是int型slice
+	n := 0
+	for i := 0; i < len(args); i++ {
+		n += args[i]
+	}
+	return n
+}
+
 func main() {
 	fmt.Println(add(3, 6))
 
@@ -42,4 +55,12 @@ func main() {
 	//fmt.Println(split(17))
 	x1, y1 := split(17)
 	fmt.Printf("x1:%d, y1:%d\n", x1, y1)
+
+	// 第一种调用方式
+	s := sum(1, 2, 3)
+	fmt.Printf("sum: %d\n", s)
+
+	// 第二种调用方式
+	s1 := []int{1, 2, 3, 4, 5}
+	fmt.Println(sum(s1...))
 }
