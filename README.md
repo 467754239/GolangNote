@@ -6,7 +6,6 @@ Golang Note
 * [arr](./arr)
 * [slice](./slice)
 * [map](./map)
-* [slice](./slice)
 * [os/exec](./exec)
 * [func](./func)
 
