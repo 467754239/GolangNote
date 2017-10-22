@@ -14,7 +14,7 @@ Golang Note
 ###### 进阶
 * [channel](./channel)
 * [io](./io)
-* [process|thread"coroutine](./ptc)
+* [process | thread | coroutine](./ptc)
 
 
 ###### web
