@@ -8,7 +8,7 @@
 
 1. 按块的方式，原生读取，也称为裸读取，很少使用。
 > cpu寄存器 > l1/l2/l3 cache > Mem > Disk
-```
+```golang
 package main
 
 import (
