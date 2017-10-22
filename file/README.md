@@ -48,7 +48,7 @@ func main() {
 2. 加上buffer的读取，很高效。
 > 预读取，bufio就是一个高效读取的方式。对普通文件读取的封装。  
 > 把数据预先放到内存buffer里，以后读数据从内存中读取，而不是从磁盘上。
-```
+```golang
 package main
 
 import (
@@ -91,7 +91,7 @@ func main() {
 3.1 小文件一次性全部读取
 > Version 1
 
-```
+```golang
 package main
 
 import (
@@ -116,7 +116,7 @@ func main() {
 
 3.2 小文件一次性全部读取 
 
-```
+```golang
 package main
 
 import (
@@ -147,7 +147,7 @@ func main() {
 
 4.1 按行读取，按分隔符读取
 
-```
+```golang
 package main
 
 import (
@@ -185,7 +185,7 @@ func main() {
 }
 ```
 4.2 按行读取，按分隔符读取
-```
+```golang
 package main
 
 import (
@@ -218,7 +218,7 @@ func main() {
 
 5. 操作类文件的神器
 > 类文件： socket/channel/file
-```
+```golang
 package main
 
 import (
