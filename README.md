@@ -6,6 +6,7 @@ Golang
 * [arr](./arr)
 * [slice](./slice)
 * [map](./map)
+* [file](./file)
 * [os/exec](./exec)
 * [func](./func)
 * [net/http](./http)
