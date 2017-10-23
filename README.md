@@ -25,5 +25,5 @@ Api
 
 Consult
 - ![Go by Example <en>](https://gobyexample.com/)
-- ![Go by Example <zn>](://www.ctolib.com/docs/sfile/gobyexample/)
+- ![Go by Example <zn>](https://www.ctolib.com/docs/sfile/gobyexample/)
 
