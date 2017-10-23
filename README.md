@@ -22,3 +22,8 @@ Advanced
 Api 
 * [gin]
 
+
+Consult
+- ![Go by Example <en>](https://gobyexample.com/)
+- ![Go by Example <zn>](://www.ctolib.com/docs/sfile/gobyexample/)
+
