@@ -18,20 +18,13 @@ func fileMd5sum(filename string) (string, error) {
 
 func main() {
 	/*
-		const Size = 16
-		16字节的数组  32个字符
+		md5是一个16字节的数组
 
+		linux
+		$ md5sum filename
 		16进制编码
-		单个16进制数取值范围 0 ~ -128
+		md5sym 结果是一个16字节的数组
 	*/
-
-	/*
-		data := []byte("hello")
-		md5sum := md5.Sum(data)
-		// %x 可以打印一个数的16进制
-		fmt.Printf("%x\n", md5sum)
-	*/
-
 	content, err := fileMd5sum("/etc/passwd")
 	if err != nil {
 		log.Fatal(err)

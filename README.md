@@ -3,6 +3,7 @@ Golang
 [![Build Status](https://travis-ci.org/justjavac/free-programming-books-zh_CN.svg?branch=master)](https://travis-ci.org/justjavac/free-programming-books-zh_CN)
 
 Basic
+* [install]
 * [arr](./arr)
 * [slice](./slice)
 * [map](./map)
@@ -10,6 +11,7 @@ Basic
 * [os/exec](./exec)
 * [func](./func)
 * [net/http](./http)
+* [md5sum](./md5sum)
 
 
 Advanced 
