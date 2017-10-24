@@ -13,7 +13,7 @@ present  -http  0.0.0.0:8000 -play=false
 
 3. Open Chrome
 
-![present slide](./imgs/slide.png)
+![ppt](./imgs/slide.png)
 
 4. reference
 
