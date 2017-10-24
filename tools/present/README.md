@@ -1,4 +1,4 @@
-present
+# present
 
 1. Install
 ```
@@ -13,4 +13,4 @@ present  -http  0.0.0.0:8000 -play=false
 ```
 
 3. Open Chrome
-![present slide](../imgs/slide.png)
+![present slide](./imgs/slide.png)
