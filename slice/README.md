@@ -27,7 +27,7 @@ func main() {
 
 ## append切片
 - 对slice扩容;
-- 一定要用原来的数组接收;
+- 一定要用原来的slice接收;
 
 
 ## 
