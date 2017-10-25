@@ -6,7 +6,7 @@
 3. make创建slice
 
 ## 切片的长度和容量
-
+> cap
 
 ## nil切片
 > nil切片不能赋值
@@ -26,7 +26,7 @@ func main() {
 ```
 
 ## append切片
-- 对slice扩容;
+- 对slice扩容, 动态扩容;
 - 一定要用原来的slice接收;
 
 
