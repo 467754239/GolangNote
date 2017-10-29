@@ -22,13 +22,13 @@ key是排序的
 
 1. 创建map
 
-```
+```golang
 
 ```
 
 2. 空map
 
-```
+```golang
 1. 空map不能做任何操作;
 2. 空map和ni是相等的;
 3. 如果要对空map操作，必须先要使用make对其进行初始化;
@@ -41,28 +41,29 @@ m = make(map[string]int)
 
 3. 词频统计
 
-```
+```golang
 
 ```
 
 4. 遍历
 
-```
+```golang
 
 ```
 
 5. 添加
 
-```
+```golang
 
 ```
 
 6. 修改
 
-```
+```golang
 
 ```
 7. 删除
-```
+
+```golang
 
 ```
