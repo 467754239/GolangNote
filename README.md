@@ -4,9 +4,11 @@ Golang
 
 Basic
 * [install]
+* [string](./string)
 * [arr](./arr)
 * [slice](./slice)
 * [map](./map)
+* [struct](./struct)
 * [file](./file)
 * [os/exec](./exec)
 * [func](./func)
