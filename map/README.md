@@ -19,3 +19,9 @@ O(logn)
 tree map(C语言)
 key是排序的
 ```
+
+1. 创建map
+
+```
+
+```
