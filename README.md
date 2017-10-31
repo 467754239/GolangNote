@@ -4,6 +4,7 @@ Golang
 
 Basic
 * [install]
+* [fmt](./fmt)
 * [string](./string)
 * [arr](./arr)
 * [slice](./slice)
