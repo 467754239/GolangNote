@@ -4,11 +4,13 @@ Golang
 
 Basic
 * [fmt](./fmt)
+* [len](./len)
 * [string](./string)
 * [arr](./arr)
 * [slice](./slice)
 * [map](./map)
 * [struct](./struct)
+* [json](./json)
 * [file](./file)
 * [os/exec](./exec)
 * [func](./func)
