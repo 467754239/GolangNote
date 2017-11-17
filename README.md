@@ -19,6 +19,7 @@ Basic
 
 
 Advanced 
+* [oo](./oo)
 * [channel](./channel)
 * [io](./io)
 * [process | thread | coroutine](./ptc)
