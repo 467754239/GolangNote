@@ -20,6 +20,7 @@ Basic
 
 Advanced 
 * [oo](./oo)
+* [time](./time)
 * [channel](./channel)
 * [io](./io)
 * [process | thread | coroutine](./ptc)
