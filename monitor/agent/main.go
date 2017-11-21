@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
 	"runtime"
@@ -55,22 +56,16 @@ func CpuMetric() []*common.Metric {
 func main() {
 	flag.Parse()
 
+	log.Println(*transAddr)
+	// 初始化构造函数
 	sender := NewSender(*transAddr)
 
+	// 返回构造函数的ch
 	ch := sender.Channel()
-
-	/*
-		// 每隔5秒钟滴答一次 发送一次数据
-		ticker := time.NewTicker(time.Second * 5)
-		for range ticker.C {
-			ch <- metric
-		}
-	*/
 
 	sched := NewSched(ch)
 	sched.AddMetric(CpuMetric, time.Second*5)
-	// memory, time.Second * 3
-	// disk, time.Minute
 
+	fmt.Println("sched finish.")
 	sender.Start()
 }

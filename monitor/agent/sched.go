@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"time"
 
 	"github.com/467754239/GolangNote/monitor/common"
@@ -14,10 +15,23 @@ type Sched struct {
 }
 
 func NewSched(ch chan *common.Metric) *Sched {
-	return nil
+	return &Sched{
+		ch: ch,
+	}
 }
 
 // 每隔多长时间收集一次
 func (s *Sched) AddMetric(collecter MetricFunc, step time.Duration) {
+	go func() {
+		ticker := time.NewTicker(step)
+		for range ticker.C {
+
+			metrics := collecter()
+			for _, metric := range metrics {
+				log.Printf("metric:%v\n", metric)
+				s.ch <- metric
+			}
+		}
+	}()
 
 }
