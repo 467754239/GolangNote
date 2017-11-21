@@ -1,3 +1,3 @@
 # mon
 
-![mon](./mon.jpg)
+![mon](./mon.png)
