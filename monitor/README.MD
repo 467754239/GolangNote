@@ -1,5 +1,5 @@
 # mon
 
 
-# 架构图
-![relation](./mon.jpg)
+架构图
+![mon](./mon.jpg)
