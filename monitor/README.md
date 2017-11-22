@@ -10,13 +10,13 @@ go build
 ./agent
 ```
 
-## 2. 编译TRANS模块
+## 2. 编译trans模块
 
 ```golang
 
 ```
 
-## 3. 编译SAVE模块
+## 3. 编译saver模块
 
 ```golang
 
