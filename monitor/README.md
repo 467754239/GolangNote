@@ -1,6 +1,6 @@
 # mon
 
-1. Usage
+## 1. Usage
 ```
 cd monitor/agent
 go build
