@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"reflect"
 	"runtime"
 	"time"
 
 	"github.com/467754239/GolangNote/monitor/common"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/load"
+	"github.com/shirou/gopsutil/mem"
 )
 
 var (
@@ -53,10 +55,33 @@ func CpuMetric() []*common.Metric {
 	return ret
 }
 
+func MemMetric() []*common.Metric {
+	var ret []*common.Metric
+
+	mem_stat, err := mem.VirtualMemory()
+	if err != nil {
+		log.Fatal(err)
+		return ret
+	}
+
+	mem_total := mem_stat.Total / 1024 / 1024
+	fmt.Println(reflect.TypeOf(mem_total))
+	mem_total_str := float64(mem_total)
+	fmt.Println(reflect.TypeOf(mem_total_str))
+
+	metric := NewMetric("mem.total", mem_total_str)
+	ret = append(ret, metric)
+
+	metric = NewMetric("mem.used_percent", mem_stat.UsedPercent)
+	ret = append(ret, metric)
+
+	return ret
+
+}
+
 func main() {
 	flag.Parse()
 
-	log.Println(*transAddr)
 	// 初始化构造函数
 	sender := NewSender(*transAddr)
 
@@ -65,7 +90,7 @@ func main() {
 
 	sched := NewSched(ch)
 	sched.AddMetric(CpuMetric, time.Second*5)
+	sched.AddMetric(MemMetric, time.Second*1)
 
-	fmt.Println("sched finish.")
 	sender.Start()
 }
