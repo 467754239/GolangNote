@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net"
 	"time"
 
@@ -29,7 +29,7 @@ func (s *Sender) connect() net.Conn {
 	for {
 		conn, err := net.Dial("tcp", s.addr)
 		if err != nil {
-			log.Warn(err)
+			log.Print(err)
 			time.Sleep(n)
 			n = n * 2
 			if n > time.Second*30 {
@@ -57,33 +57,15 @@ func (s *Sender) Start() {
 			fmt.Fprintf(conn, "%s\n", metric)
 		}
 	*/
-
-	// 定时定量发送
 	conn := s.connect()
-
-	// 蓄水池 4k
-	w := bufio.NewWriter(conn)
-	log.Infof("local addr:%v\n", conn.LocalAddr())
-	ticker := time.NewTicker(time.Second * 3)
-	for {
-		select {
-		case metric := <-s.ch:
-			buf, _ := json.Marshal(metric)
-			_, err := fmt.Fprintf(w, "%s\n", buf)
-			if err != nil {
-				conn.Close()
-				conn = s.connect()
-				w = bufio.NewWriter(conn)
-				log.Infof("local addr:%v\n", conn.LocalAddr())
-			}
-		case <-ticker.C:
-			err := w.Flush()
-			if err != nil {
-				conn.Close()
-				conn = s.connect()
-				w = bufio.NewWriter(conn)
-				log.Infof("local addr:%v\n", conn.LocalAddr())
-			}
+	fmt.Printf("local addr:%v\n", conn.LocalAddr())
+	for metric := range s.ch {
+		buf, _ := json.Marshal(metric)
+		_, err := fmt.Fprintf(conn, "%s\n", string(buf))
+		if err != nil {
+			conn.Close()
+			conn = s.connect()
+			fmt.Printf("local addr:%v\n", conn.LocalAddr())
 		}
 	}
 }

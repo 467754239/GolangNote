@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"time"
 
 	"github.com/467754239/GolangNote/monitor/common"
@@ -29,7 +28,7 @@ func (s *Sched) AddMetric(collecter MetricFunc, step time.Duration) {
 
 			metrics := collecter()
 			for _, metric := range metrics {
-				log.Printf("metric:%v\n", metric)
+				log.Debugf("metric:%v\n", metric)
 				s.ch <- metric
 			}
 		}

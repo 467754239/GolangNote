@@ -3,13 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"reflect"
 	"runtime"
 	"time"
 
 	"github.com/467754239/GolangNote/monitor/common"
+	"github.com/467754239/logrus"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/load"
 	"github.com/shirou/gopsutil/mem"
@@ -17,7 +17,14 @@ import (
 
 var (
 	transAddr = flag.String("trans", "127.0.0.1:6000", "transfer address")
+	log       = logrus.New()
 )
+
+func init() {
+	log.Formatter = new(logrus.JSONFormatter)
+	log.Formatter = new(logrus.TextFormatter) // default
+	log.Level = logrus.DebugLevel
+}
 
 func NewMetric(metric string, value float64) *common.Metric {
 	hostname, _ := os.Hostname()
@@ -36,7 +43,7 @@ func CpuMetric() []*common.Metric {
 
 	cpus, err := cpu.Percent(time.Second, false)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	metric := NewMetric("cpu.percent", cpus[0])
@@ -60,7 +67,7 @@ func MemMetric() []*common.Metric {
 
 	mem_stat, err := mem.VirtualMemory()
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 		return ret
 	}
 
@@ -82,6 +89,7 @@ func MemMetric() []*common.Metric {
 func main() {
 	flag.Parse()
 
+	log.Info("Start Agent......")
 	// 初始化构造函数
 	sender := NewSender(*transAddr)
 
@@ -92,5 +100,6 @@ func main() {
 	sched.AddMetric(CpuMetric, time.Second*5)
 	sched.AddMetric(MemMetric, time.Second*1)
 
+	// 主协成阻塞
 	sender.Start()
 }
