@@ -1,6 +1,6 @@
 # mon
 
-## 1. 编译AGENT模块 
+## 1. agent 
 
 ```golang
 get get -v github.com/467754239/GolangNote/tree/master/monitor
@@ -10,13 +10,13 @@ go build
 ./agent
 ```
 
-## 2. 编译trans模块
+## 2. trans
 
 ```golang
 
 ```
 
-## 3. 编译saver模块
+## 3. saver
 
 ```golang
 
