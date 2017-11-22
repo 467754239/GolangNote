@@ -1,8 +1,9 @@
 # mon
 
-## 1. Usage
+## 1. 编译AGENT模块 
 ```
-cd monitor/agent
+get get -v github.com/467754239/GolangNote/tree/master/monitor
+cd $GOPATH/src/github.com/467754239/GolangNote/monitor/agent
 go build
 ./agent -h
 ./agent
