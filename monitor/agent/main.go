@@ -1,11 +1,15 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"os"
+	"os/exec"
 	"reflect"
 	"runtime"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/467754239/GolangNote/monitor/common"
@@ -84,6 +88,35 @@ func MemMetric() []*common.Metric {
 
 	return ret
 
+}
+
+func getUserMetrics(name string) ([]*common.Metric, error) {
+	// 构建命令
+	// 获取标准输出
+	// 按行解析
+	// 获取key， value
+	// 包装成common.Metric
+
+	var ret []*common.Metric
+
+	cmd := exec.Command("python", name)
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+	s_buf := strings.Split(out.String(), "\n")
+	for _, info := range s_buf {
+		if info != "" {
+			s_info := strings.Fields(info)
+			i, _ := strconv.ParseFloat(s_info[1], 64)
+			metric := NewMetric(s_info[0], i)
+			log.Info(metric)
+			//ret = append(ret, metric)
+		}
+	}
+	return ret, nil
 }
 
 func main() {
