@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bytes"
+	"bufio"
 	"flag"
 	"fmt"
 	"os"
@@ -90,7 +90,18 @@ func MemMetric() []*common.Metric {
 
 }
 
-func getUserMetrics(name string) ([]*common.Metric, error) {
+func NewUserMetric(cmdstr string) MetricFunc {
+	return func() []*common.Metric {
+		metrics, err := getUserMetrics(cmdstr)
+		if err != nil {
+			log.Print(err)
+			return []*common.Metric{}
+		}
+		return metrics
+	}
+}
+
+func getUserMetrics(cmdstr string) ([]*common.Metric, error) {
 	// 构建命令
 	// 获取标准输出
 	// 按行解析
@@ -98,24 +109,35 @@ func getUserMetrics(name string) ([]*common.Metric, error) {
 	// 包装成common.Metric
 
 	var ret []*common.Metric
+	cmd := exec.Command("bash", "-c", cmdstr)
+	stdout, _ := cmd.StdoutPipe()
 
-	cmd := exec.Command("python", name)
-	var out bytes.Buffer
-	cmd.Stdout = &out
-	err := cmd.Run()
+	err := cmd.Start()
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	s_buf := strings.Split(out.String(), "\n")
-	for _, info := range s_buf {
-		if info != "" {
-			s_info := strings.Fields(info)
-			i, _ := strconv.ParseFloat(s_info[1], 64)
-			metric := NewMetric(s_info[0], i)
-			log.Info(metric)
-			//ret = append(ret, metric)
+
+	r := bufio.NewReader(stdout)
+	for {
+		line, err := r.ReadString('\n')
+		if err != nil {
+			break
 		}
+		line = strings.TrimSpace(line)
+		fields := strings.Fields(line)
+		if len(fields) != 2 {
+			continue
+		}
+		key, value := fields[0], fields[1]
+		n, err := strconv.ParseFloat(value, 64)
+		if err != nil {
+			log.Print(err)
+			continue
+		}
+		metric := NewMetric(key, n)
+		ret = append(ret, metric)
 	}
+
 	return ret, nil
 }
 
@@ -130,6 +152,8 @@ func main() {
 	ch := sender.Channel()
 
 	sched := NewSched(ch)
+
+	sched.AddMetric(NewUserMetric("./usr.py"), time.Second*5)
 	sched.AddMetric(CpuMetric, time.Second*5)
 	sched.AddMetric(MemMetric, time.Second*1)
 
