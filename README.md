@@ -23,7 +23,7 @@ Advanced
 * [time](./time)
 * [channel](./channel)
 * [io](./io)
-* [process | thread | coroutine](./ptc)
+* [goroutine](./goroutine)
 * [tools](./tools)
 
 

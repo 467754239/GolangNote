@@ -1,0 +1,14 @@
+[sender]
+trans_addr = "127.0.0.1:6000"
+flush_interval = 5
+max_sleep_time = 30
+
+
+[[user_script]]
+path = "/home/zhengyansheng/usr.py"
+step = "3s"
+
+
+[[user_script]]
+path = "/home/zhengyansheng/redis.py"
+step = "10s"
