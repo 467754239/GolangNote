@@ -5,6 +5,7 @@ Golang
 Basic
 * [fmt](./fmt)
 * [len](./len)
+* [time](./time)
 * [string](./string)
 * [arr](./arr)
 * [slice](./slice)
