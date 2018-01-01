@@ -27,8 +27,10 @@ Advanced
 * [io](./io)
 * [goroutine](./goroutine)
 * [tools](./tools)
+* [regex](./regex)
 * [redis](./redis)
 * [xrom](./xrom)
+* [rpc](./rpc)
 
 
 Project
