@@ -1,0 +1,86 @@
+syntax on
+
+" tab宽度和缩进同样设置为4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set nu
+set backspace=indent,eol,start
+set hidden
+set nocompatible
+ 
+" 你在此设置运行时路径
+set rtp+=~/.vim/bundle/Vundle.vim
+ 
+call vundle#begin()
+ 
+" Vundle 本身就是一个插件
+Plugin 'gmarik/Vundle.vim'
+Plugin 'fatih/vim-go' 
+
+
+"" Plugin 'Valloric/YouCompleteMe'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+
+colorscheme darkblue 
+hi Normal guifg=#c0c0c0 guibg=#294d4a ctermfg=gray ctermbg=black
+hi Pmenu guibg=#444444
+hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+hi MatchParen ctermfg=7 ctermbg=4
+
+"" tab 函数补全
+Plugin 'SirVer/ultisnips'
+
+ 
+filetype off
+
+""缩进设置
+filetype plugin indent on
+
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType go set omnifunc=gocomplete#Complete
+
+" vim-go settings
+let g:go_fmt_command = "goimports"
+
+
+" YCM settings
+let g:ycm_key_list_select_completion = ['', '']
+let g:ycm_key_list_previous_completion = ['']
+let g:ycm_key_invoke_completion = '<C-Space>'
+
+" UltiSnips setting
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:godef_split=2
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+
+"" python
+set encoding=utf-8
+Plugin 'scrooloose/syntastic'
+let python_highlight_all=1
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+""Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'vim-scripts/indentpython.vim'
+autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
+
+"所有插件都应该在这一行之前 
+call vundle#end()
+
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1

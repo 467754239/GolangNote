@@ -29,7 +29,7 @@ Advanced
 * [tools](./tools)
 * [regex](./regex)
 * [redis](./redis)
-* [xrom](./xrom)
+* [xrom](./db)
 * [rpc](./rpc)
 
 
@@ -39,6 +39,8 @@ Project
 
 Tool
 * [ftp](./ftp)
+* [lh](./lh)
+* [vim](./vim)
 
 
 Document
