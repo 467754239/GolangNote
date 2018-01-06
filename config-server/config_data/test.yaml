@@ -1,0 +1,28 @@
+#test yaml, you can modify it as you wish
+envName: test
+
+test:
+    items: ["1", "2", "3"]
+    item2: [ {"fld1" : "val1"} , {"fld2" : "val2"} ]
+    item3: [ "test1" , "test2", [ "test3"]]
+prophet:
+    yarn-host: 127.0.0.1
+    yarn-port: 8088
+
+simba:
+    host: 172.27.1.121
+    port: 8080
+
+{{.G_API_PATH}}
+
+dummyWorker:
+    slotStatement: {{.G_dummyWorkerSlotStatement}}
+
+task-manager:
+    serverPort: 9876
+    dbURL: "jdbc:mariadb://localhost:3306/TM"
+    dbUser: root
+    dbPassword: "$#%$@%$#@"
+    minPoolSize: 2
+    maxPoolSize: 10
+    acquireIncrement: 2

@@ -1,0 +1,13 @@
+G_dummyWorkerSlotStatement: select * from A
+G_API_PATH: |
+  createDataApi: /api/data/
+  createReportApi: /api/reports
+  createModelApi: /api/models
+  queryDataApi: /api/data/
+  updateDataApi: /api/data/
+  queryModelApi: /api/model
+G_CONF: |
+  worker:
+    # pico bin,log和output的部署路径
+    deploy-path: /root/deploy/ #绝对路径
+    log-path: /storage/log/prophet/worker/
