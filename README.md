@@ -35,6 +35,7 @@ Advanced
 
 Project
 * [monitor](./monitor)
+* [config-server](./config-server)
 
 
 Tool
