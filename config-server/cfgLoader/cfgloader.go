@@ -2,7 +2,8 @@ package cfgloader
 
 import (
 	"sync"
-	"vkbotlib/utils/log"
+
+	log "github.com/auxten/logrus"
 
 	simplejson "github.com/bitly/go-simplejson"
 )
