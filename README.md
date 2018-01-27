@@ -26,6 +26,7 @@ Advanced
 * [channel](./channel)
 * [io](./io)
 * [goroutine](./goroutine)
+* [concurrent](./concurrent)
 * [tools](./tools)
 * [regex](./regex)
 * [redis](./redis)
